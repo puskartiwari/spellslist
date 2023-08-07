@@ -70,6 +70,8 @@ function AboutPage() {
     const [spells, setSpells] = useState<Spell[]>([]);
     const [favorites, setFavorites] = useState<Spell[]>([]);
 
+    const [spellData, setSpellData] = useState<Spell | null>(null);
+
     useEffect(() => {
         fetch('http://www.dnd5eapi.co/api/spells')
             .then((response) => response.json())
@@ -82,12 +84,6 @@ function AboutPage() {
 
     return (
         <div className="App">
-            {/* <div className="flex-container">
-                <div className="flex-item-left">1</div>
-                <div className="flex-item-center">3</div>
-                <div className="flex-item-right">2</div>
-            </div> */}
-
             <div className="flex-container">
                 <div className="flex-item-left">
                     <div className="flex-container-c">
@@ -97,22 +93,23 @@ function AboutPage() {
                             <ul>
                                 {spells.map((spell) => (
                                     <li key={spell.name}>
-                                        {/* <a href={`${spell.name}`}>{spell.name}</a> <br></br> */}
-                                        <Link to="/test">{spell.name}</Link>
+                                        {/* <a href={`/spells/${spell.name}`}>{spell.name}</a> <br></br> */}
+                                        <Link to="/test" className="list-name">
+                                            {spell.name}
+                                        </Link>
                                         <br></br>
-                                        <br></br>
-                                        <button onClick={() => addToFavorites(spell)}>Add Favorites</button>
+                                        <button className="btn-tab" onClick={() => addToFavorites(spell)}>
+                                            Add Favorites
+                                        </button>
                                     </li>
                                 ))}
                             </ul>
-                            <br></br>
-                            <br></br>
                         </div>
                     </div>
                 </div>
                 {/* <div className="flex-item-center">3</div> */}
                 <div className="flex-item-right">
-                    <h2>Favorites</h2>
+                    <h2>MY Favorites</h2>
                     <ul>
                         {favorites.map((spell) => (
                             <li key={spell.name}>{spell.name}</li>
@@ -120,21 +117,6 @@ function AboutPage() {
                     </ul>
                 </div>
             </div>
-            {/* <h1>List of Spells</h1>
-            <ul>
-                {spells.map((spell) => (
-                    <li key={spell.name}>
-                        <a href={`/spells/${spell.name}`}>{spell.name}</a> <br></br>
-                        <button onClick={() => addToFavorites(spell)}>Add to Favorites</button>
-                    </li>
-                ))}
-            </ul> */}
-            {/* <h2>Favorites</h2>
-            <ul>
-                {favorites.map((spell) => (
-                    <li key={spell.name}>{spell.name}</li>
-                ))}
-            </ul> */}
         </div>
     );
 }

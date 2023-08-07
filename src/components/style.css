@@ -2,6 +2,16 @@
     box-sizing: border-box;
 }
 
+.home-page {
+    text-align: center;
+    font-weight: 200;
+}
+
+.spell-lists {
+    font-size: 20px;
+    text-decoration: none;
+}
+
 .flex-container-c {
     display: flex;
     flex-direction: column;
@@ -28,13 +38,17 @@
 .flex-container ul {
     list-style-type: none;
     list-style: none;
+    margin: 10px;
 }
 
-.flex-container ul li {
+.list-name {
     list-style-type: none;
     text-decoration: none;
 }
 
+.btn-tab {
+    margin-bottom: 15px;
+}
 .flex-container button {
     background-color: antiquewhite;
     border-radius: 50px;

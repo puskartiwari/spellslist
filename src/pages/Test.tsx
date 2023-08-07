@@ -74,38 +74,6 @@ interface Spell {
 const TestPage: React.FC = () => {
     const [spellData, setSpellData] = useState<Spell | null>(null);
 
-    // useEffect(() => {
-    //     fetchSpells();
-    // }, []);
-
-    // const fetchData = async () => {
-    //     try {
-    //         const response = await fetch(`http://www.dnd5eapi.co/api/spells/${name}`);
-    //         if (!response.ok) {
-    //             throw new Error('Failed to fetch spells');
-    //         }
-    //         .then((response) => {
-    //             setSpellData(response.data);
-    //         })
-
-    //     } catch (error) {
-    //         console.error('Error fetching spells:', error);
-    //     }
-    // };
-
-    // useEffect(function doSomething() {
-    //     // <--- name me!
-    //     // Your effect code
-    //     axios
-    //         .get<Spell>('http://www.dnd5eapi.co/api/spells/acid-arrow')
-    //         .then((response) => {
-    //             setSpellData(response.data);
-    //         })
-    //         .catch((error) => {
-    //             console.error('Error fetching spell data:', error);
-    //         });
-    // }, []);
-
     useEffect(() => {
         axios
             .get<Spell>('http://www.dnd5eapi.co/api/spells/acid-arrow')
@@ -120,13 +88,9 @@ const TestPage: React.FC = () => {
     return (
         <div>
             <h1>Acid Arrow Spell</h1>
-            {/* <a href={`${spell.name}`}>{spell.name}</a>  */}
-            {/* <button onClick={doSomething}>Detail</button> */}
 
             {spellData?.desc.map((description, index) => (
                 <p key={index}>{description}</p>
-
-                //  <a href={`${spell.name}`}>{spell.name}</a>
             ))}
         </div>
     );
